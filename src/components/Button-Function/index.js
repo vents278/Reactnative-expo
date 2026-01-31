@@ -1,7 +1,7 @@
 import { Text, TouchableOpacity } from "react-native";
 import {styles} from './styles'
 
-export  function Button({currency ,onPress,variant='primary'}) {
+export  function Button_Conv({children,onPress,variant='primary'}) {
     return(
         
         <TouchableOpacity style={[
@@ -11,7 +11,7 @@ export  function Button({currency ,onPress,variant='primary'}) {
            
         ]}>
             <Text style={styles.buttonText}>
-                {currency.code}
+                {children}
             </Text>
             
         </TouchableOpacity>

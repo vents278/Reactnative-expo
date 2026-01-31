@@ -1,6 +1,6 @@
  
  import { StyleSheet } from "react-native";
- import {colors} from '../../styles/colors'
+ import {colors} from './src/styles/colors'
 
 
  export const styles = StyleSheet.create({
@@ -48,6 +48,30 @@
         color: colors.textSecondary,
         marginBottom: 8,
         fontSize: 14
+    },
+
+    currencyGrid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        marginHorizontal: -4,
+        marginBottom: 12,
+        alignItems: 'center', 
+        justifyContent: 'center',
+        gap: 8   
+
+    },
+     textInput: {
+        backgroundColor: colors.inputBackground,
+        paddingHorizontal :24,
+        paddingVertical: 18,
+        borderRadius: 4,
+        alignItems: 'center',
+        color: colors.text,
+        fontWeight: '500',
+    },
+
+    viewInput:{
+        marginTop:20
     }
 
  })
