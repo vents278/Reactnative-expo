@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button }  from './src/components/Button';
+import {styles} from './App-styles'
 
 export default function App() {
   return (
@@ -22,10 +23,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    
-    backgroundColor: '#fff',
-    
-  },
-});
+
