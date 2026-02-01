@@ -7,9 +7,11 @@ import { ScrollView } from "react-native";
 import { currencies } from "./src/constants/currencies";
 import { Button_Conv } from './src/components/Button-Function';
 import { Text_Input } from "./src/components/Text_Input";
+
 export default function App() {
   return (
-    <KeyboardAvoidingView
+    
+<KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
