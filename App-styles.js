@@ -60,18 +60,30 @@
         gap: 8   
 
     },
-     textInput: {
-        backgroundColor: colors.inputBackground,
-        paddingHorizontal :24,
-        paddingVertical: 18,
-        borderRadius: 4,
-        alignItems: 'center',
-        color: colors.text,
-        fontWeight: '500',
-    },
+     
 
     viewInput:{
         marginTop:20
-    }
+    },
+
+    swapButton :{
+        backgroundColor:colors.inputBackground,
+        paddingHorizontal :24,
+        paddingVertical: 18,
+        borderRadius: 4,
+        marginBottom: 24
+    },
+
+    swapButtonText: {
+        color: '#ffffff' ,
+        textAlign: 'center',
+        fontSize:18,
+        fontWeight: '600',
+
+    },
+
+
+
+    
 
  })

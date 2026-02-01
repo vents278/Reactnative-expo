@@ -24,5 +24,8 @@ export const styles =StyleSheet.create({
         backgroundColor: colors.secondary
     },
 
+    disabled: {
+        backgroundColor: colors.disabled,
+      }
    
 })

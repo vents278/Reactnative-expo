@@ -2,12 +2,11 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import { Button } from "./src/components/Button";
 import { styles } from "./App-styles";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform,TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import { currencies } from "./src/constants/currencies";
-import { TextInput } from "react-native";
-import {Button_Conv} from './src/components/Button-Function'
-
+import { Button_Conv } from './src/components/Button-Function';
+import { Text_Input } from "./src/components/Text_Input";
 export default function App() {
   return (
     <KeyboardAvoidingView
@@ -34,7 +33,10 @@ export default function App() {
 
             <View style={styles.viewInput}>
               <Text style={styles.label}>Valor:</Text>
-              <TextInput style={styles.textInput}></TextInput>
+              <Text_Input></Text_Input>
+              <TouchableOpacity style={styles.swapButton}>
+                <Text style={styles.swapButtonText}>↑↓</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.viewInput}>
               <Text style={styles.label}>Para :</Text>
