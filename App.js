@@ -9,6 +9,7 @@ import { exchangeRateApi, convertCurrency } from "./src/services/api";
 import { Text_Input } from "./src/components/Text_Input";
 import { useState } from "react";
 import { ResultCard } from "./src/components/ResultCard";
+import { ActivityIndicator } from "react-native";
 export default function App() {
 
   const [amount, setAmount] = useState('');
@@ -23,14 +24,29 @@ export default function App() {
 
 
    async function fetchExchangeRate() {
+    
+    try {
+    setLoading(true)
+    if(!amount) return null
      const response = await exchangeRateApi(fromCurrency);
      const rate = response.rates[toCurrency];
      setExchangeRate(rate);
      const convertedAmount = convertCurrency(amount, rate);
      setResult(convertedAmount);
-     console.log(convertedAmount);
-     
-   }
+    }
+    catch (error) {
+      alert('Erro ao obter taxa de câmbio. Por favor, tente novamente mais tarde.');
+    } finally {
+      setLoading(false);
+    }
+    }
+
+    function swapCurrencies() {
+      
+      setFromCurrency(toCurrency);
+      setToCurrency(fromCurrency);
+      setResult('');
+    }
   return (
     
 <KeyboardAvoidingView
@@ -64,7 +80,9 @@ export default function App() {
             <View style={styles.viewInput}>
               <Text style={styles.label}>Valor:</Text>
               <Text_Input value={amount} onChangeText={setAmount}></Text_Input>
-              <TouchableOpacity style={styles.swapButton}>
+              <TouchableOpacity 
+              style={styles.swapButton}
+              onPress={swapCurrencies}>
                 <Text style={styles.swapButtonText}>↑↓</Text>
               </TouchableOpacity>
             </View>
@@ -85,8 +103,9 @@ export default function App() {
           </View>
                 <TouchableOpacity 
                 onPress={fetchExchangeRate}
-                style={styles.buttonFunction} >
-                  <Text style={styles.textButtonFunction}>Converter</Text>
+                disabled={!amount || loading}
+                style={[styles.buttonFunction,((!amount || loading) && styles.buttonFunctionDisabled)]}>
+                  {loading? (<ActivityIndicator color='white'/>):(<Text style={styles.textButtonFunction}>Converter</Text>)}
                 </TouchableOpacity>
 
                 <ResultCard

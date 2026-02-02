@@ -87,7 +87,17 @@
         paddingHorizontal :24,
         paddingVertical: 18,
         borderRadius: 4,
-        alignItems: 'center'
+        alignItems: 'center',
+        
+    },
+
+    buttonFunctionDisabled :{
+        backgroundColor:colors.disabled,
+        paddingHorizontal :24,
+        paddingVertical: 18,
+        borderRadius: 4,
+        alignItems: 'center',
+        
     },
 
     textButtonFunction: {
