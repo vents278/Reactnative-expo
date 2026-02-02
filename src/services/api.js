@@ -12,3 +12,9 @@ const BASE_URL = 'https://api.exchangerate-api.com/v4/latest'
         throw error;
     }
 }
+
+
+export function  convertCurrency(amount,rate){
+    return (parseFloat(amount)* rate).toFixed(2)
+
+}

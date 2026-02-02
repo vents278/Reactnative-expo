@@ -5,9 +5,10 @@ import { styles } from "./App-styles";
 import { KeyboardAvoidingView, Platform,TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import { currencies } from "./src/constants/currencies";
-import { exchangeRateApi } from "./src/services/api";
+import { exchangeRateApi, convertCurrency } from "./src/services/api";
 import { Text_Input } from "./src/components/Text_Input";
 import { useState } from "react";
+import { ResultCard } from "./src/components/ResultCard";
 export default function App() {
 
   const [amount, setAmount] = useState('');
@@ -22,8 +23,13 @@ export default function App() {
 
 
    async function fetchExchangeRate() {
-     const response = await exchangeRateApi('BRL');
-     console.log(response);
+     const response = await exchangeRateApi(fromCurrency);
+     const rate = response.rates[toCurrency];
+     setExchangeRate(rate);
+     const convertedAmount = convertCurrency(amount, rate);
+     setResult(convertedAmount);
+     console.log(convertedAmount);
+     
    }
   return (
     
@@ -57,7 +63,7 @@ export default function App() {
 
             <View style={styles.viewInput}>
               <Text style={styles.label}>Valor:</Text>
-              <Text_Input></Text_Input>
+              <Text_Input value={amount} onChangeText={setAmount}></Text_Input>
               <TouchableOpacity style={styles.swapButton}>
                 <Text style={styles.swapButtonText}>↑↓</Text>
               </TouchableOpacity>
@@ -82,6 +88,15 @@ export default function App() {
                 style={styles.buttonFunction} >
                   <Text style={styles.textButtonFunction}>Converter</Text>
                 </TouchableOpacity>
+
+                <ResultCard
+                  exchangeRate= {exchangeRate}
+                  result={result}
+                  fromCurrency={fromCurrency}
+                  toCurrency={toCurrency}
+                  currencies={currencies}>
+                  
+                </ResultCard>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

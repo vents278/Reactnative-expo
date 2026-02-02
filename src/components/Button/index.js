@@ -4,8 +4,10 @@ import {styles} from './styles'
 export  function Button({currency ,onPress,variant='primary',isSelected}) {
     return(
         
-        <TouchableOpacity style={[
-            onPress ={onPress},
+        <TouchableOpacity 
+        
+        onPress ={onPress}
+        style={[
             styles.button,
             isSelected && (variant === 'primary' ? styles.buttonPrimary : styles.buttonSecondary)
             
