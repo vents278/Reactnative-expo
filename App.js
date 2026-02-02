@@ -5,10 +5,15 @@ import { styles } from "./App-styles";
 import { KeyboardAvoidingView, Platform,TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import { currencies } from "./src/constants/currencies";
-import { Button_Conv } from './src/components/Button-Function';
+import { exchangeRateApi } from "./src/services/api";
 import { Text_Input } from "./src/components/Text_Input";
 
 export default function App() {
+  
+   async function fetchExchangeRate() {
+     const response = await exchangeRateApi('BRL');
+     console.log(response);
+   }
   return (
     
 <KeyboardAvoidingView
@@ -53,7 +58,11 @@ export default function App() {
               </View>
             </View>
           </View>
-                <Button_Conv>Converter</Button_Conv>
+                <TouchableOpacity 
+                onPress={onPress}
+                style={styles.buttonFunction} >
+                  <Text style={styles.textButtonFunction}>Converter</Text>
+                </TouchableOpacity>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

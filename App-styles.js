@@ -82,6 +82,21 @@
 
     },
 
+    buttonFunction :{
+        backgroundColor:colors.primary,
+        paddingHorizontal :24,
+        paddingVertical: 18,
+        borderRadius: 4,
+        alignItems: 'center'
+    },
+
+    textButtonFunction: {
+        color: '#ffffff' ,
+        textAlign: 'center',
+        fontSize:18,
+        fontWeight: '600',
+    },
+
 
 
     
