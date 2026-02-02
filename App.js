@@ -7,9 +7,20 @@ import { ScrollView } from "react-native";
 import { currencies } from "./src/constants/currencies";
 import { exchangeRateApi } from "./src/services/api";
 import { Text_Input } from "./src/components/Text_Input";
-
+import { useState } from "react";
 export default function App() {
-  
+
+  const [amount, setAmount] = useState('');
+  const [fromCurrency, setFromCurrency] = useState('USD');
+  const [toCurrency, setToCurrency] = useState('BRL');
+  const [result, setResult] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [exchangeRate, setExchangeRate] = useState(null);  
+
+
+
+
+
    async function fetchExchangeRate() {
      const response = await exchangeRateApi('BRL');
      console.log(response);
@@ -34,7 +45,13 @@ export default function App() {
             <Text style={styles.label}>De :</Text>
             <View style={styles.currencyGrid}>
               {currencies.map((currency) => (
-                <Button key={currency.code} currency={currency}></Button>
+                <Button 
+                variant="primary"
+                key={currency.code} 
+                currency={currency}
+                onPress={()=> setFromCurrency(currency.code)}
+                isSelected={fromCurrency === currency.code}
+                ></Button>
               ))}
             </View>
 
@@ -53,6 +70,8 @@ export default function App() {
                     variant="secondary"
                     key={currency.code}
                     currency={currency}
+                    onPress={()=> setToCurrency(currency.code)}
+                    isSelected={toCurrency === currency.code}
                   ></Button>
                 ))}
               </View>
