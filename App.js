@@ -59,7 +59,7 @@ export default function App() {
             </View>
           </View>
                 <TouchableOpacity 
-                onPress={onPress}
+                onPress={fetchExchangeRate}
                 style={styles.buttonFunction} >
                   <Text style={styles.textButtonFunction}>Converter</Text>
                 </TouchableOpacity>

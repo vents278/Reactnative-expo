@@ -1,4 +1,4 @@
-const BASE_URL = 'https://app.exchangerate-api.com/v4/latest'
+const BASE_URL = 'https://api.exchangerate-api.com/v4/latest'
 
  export async function exchangeRateApi(fromCurrency) {
 
